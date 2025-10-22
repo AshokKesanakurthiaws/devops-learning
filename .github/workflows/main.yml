@@ -1,0 +1,29 @@
+name: DevOps Automation Demo
+
+on:
+  push:
+    branches:
+      - main  # Run this workflow whenever you push to the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"
+
+      - name: Install dependencies
+        run: |
+          echo "Installing dependencies..."
+          pip install requests
+
+      - name: Run a simple test
+        run: |
+          echo "Running my first automated script..."
+          python -c "print('Hello DevOps Automation!')"
